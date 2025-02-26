@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import Modal from "./components/Modal/Modal";
 import RegisterModal from "./components/Modal/RegisterModal";
+import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: "Aribnb",
   description: "Aribnb clone",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <ClientOnly>
           {/* <Modal actionLabel='Submit' title='Hello World' isOpen/>  */}
+          <Toaster/>
           <RegisterModal />
           <Navbar />
         </ClientOnly>
