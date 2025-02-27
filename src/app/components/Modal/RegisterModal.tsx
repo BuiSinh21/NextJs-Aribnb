@@ -21,9 +21,9 @@ const RegisterModal = () => {
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
+            name:'',
             email: '',
             password: '',
-            confirmPassword: ''
         }
     })
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
