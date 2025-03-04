@@ -1,16 +1,16 @@
 
 "use client";
-import useRegisterModal from "@/app/hooks/useRegisterModal"
 import axios from "axios";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../Input/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import useRegisterModal from "../../hooks/useRegisterModal";
+import Modal from "@/app/components/modal/Modal";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -43,8 +43,7 @@ const RegisterModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4 ">
-            <h2 className="font-semibold text-2xl">Welcome to Airbnb</h2>
-            <p className="text-neutral-500">Create an acount</p>
+            <Heading title="Welcome to Airbnb" subtitle="Create an acount" />
             <Input id="email" label="Email"
                 disabled={isLoading}
                 register={register}
@@ -83,7 +82,7 @@ const RegisterModal = () => {
                 Icon={AiFillGithub }
                 onClick={() => { }}
             />
-            <div className="text-center text-neutral-500 text-center mt-4 font-light">
+            <div className=" text-neutral-500 text-center mt-4 font-light">
                 <div className="justify-center flex flex-row items">
                     <div>
                         Already have an account? 

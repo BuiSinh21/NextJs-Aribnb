@@ -12,10 +12,8 @@ const ClientOnly :React.FC<ClientOnlyProps>= ({children}) => {
     },[])
     if(!hasMonted) return null
   return (
-    <div>
-      {children}
-    </div>
+    <>{children}</>
   )
 }
 
-export default ClientOnly
+export default ClientOnly;

@@ -2,8 +2,6 @@ import bcrypt from "bcrypt";
 import prisma from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 export async function POST(request: Request) {
-console.log(111,request);
-
   const body = await request.json();
 
   const { email, password, name } = body;
