@@ -2,7 +2,7 @@
 "use client";
 import Modal from "@/app/components/modal/Modal";
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../Input/Input";
 import toast from "react-hot-toast";
@@ -67,6 +67,7 @@ const LoginModal = () => {
                 type="password"
                 label="Password"
                 disabled={isLoading}
+                
                 register={register}
                 errors={errors}
                 required
@@ -74,6 +75,10 @@ const LoginModal = () => {
 
         </div>
     )
+    const toggle = useCallback(()=>{
+        loginModal.onClose();
+        registerModal.onOpen();
+    },[loginModal,registerModal])
     const footerContent = (<>
         <div className="flex flex-col gap-4 mt-3">
             <hr />
@@ -92,9 +97,9 @@ const LoginModal = () => {
             <div className="text-center text-neutral-500 mt-4 font-light">
                 <div className="justify-center flex flex-row items">
                     <div>
-                        Already have an account?
+                        First time using Airbnb?
                     </div>
-                    <div onClick={() => registerModal.onClose()} className="text-neutral-800 cursor-pointer hover: underline"> Log in</div>
+                    <div onClick={() => toggle()} className="text-neutral-800 cursor-pointer hover: underline">Create an account</div>
                 </div>
             </div>
         </div>

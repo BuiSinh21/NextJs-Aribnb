@@ -1,7 +1,7 @@
 
 "use client";
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../Heading";
 import Input from "../Input/Input";
@@ -11,9 +11,11 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import useRegisterModal from "../../hooks/useRegisterModal";
 import Modal from "@/app/components/modal/Modal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
     const {
         register,
@@ -41,6 +43,11 @@ const RegisterModal = () => {
             })
     }
 
+    const toggle = useCallback(()=>{
+        loginModal.onOpen();
+        registerModal.onClose();
+    },[loginModal,registerModal])
+
     const bodyContent = (
         <div className="flex flex-col gap-4 ">
             <Heading title="Welcome to Airbnb" subtitle="Create an acount" />
@@ -67,6 +74,7 @@ const RegisterModal = () => {
 
         </div>
     )
+   
     const footerContent = (<>
         <div className="flex flex-col gap-4 mt-3">
             <hr />
@@ -87,7 +95,7 @@ const RegisterModal = () => {
                     <div>
                         Already have an account? 
                     </div>
-                    <div onClick={()=> registerModal.onClose()} className="text-neutral-800 cursor-pointer hover: underline"> Log in</div>
+                    <div onClick={()=> toggle()} className="text-neutral-800 cursor-pointer hover: underline"> Log in</div>
                 </div>
             </div>
         </div>
